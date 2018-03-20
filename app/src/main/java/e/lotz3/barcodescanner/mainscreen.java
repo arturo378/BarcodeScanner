@@ -15,8 +15,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class mainscreen extends AppCompatActivity {
-    private Button adder;
+public class mainscreen extends AppCompatActivity implements View.OnClickListener {
+    private Button adder, scan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,27 +25,33 @@ public class mainscreen extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final Button button = findViewById(R.id.button_scan);
-        adder = (Button) findViewById(R.id.button_add);
+
+        findViewById(R.id.button_scan).setOnClickListener(this);
+        findViewById(R.id.button_add).setOnClickListener(this);
 
 
-        adder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openactivity_adder();
-            }
-        });
 
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                final DatabaseReference myRef = database.getReference("Description");
-                myRef.setValue("phone");
-                setContentView(R.layout.activity_mainscreen);
-            }
-        });
+
+
     }
 
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.button_scan:
+
+                startActivity(new Intent(this, Scan.class));
+
+                break;
+            case R.id.button_add:
+                openactivity_adder();
+                break;
+
+
+        }
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
