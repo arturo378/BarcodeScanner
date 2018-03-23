@@ -16,7 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class mainscreen extends AppCompatActivity implements View.OnClickListener {
-    private Button adder, scan;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
