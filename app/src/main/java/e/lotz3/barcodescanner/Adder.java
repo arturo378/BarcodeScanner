@@ -84,6 +84,11 @@ public class Adder extends AppCompatActivity {
                DatabaseReference myRef = database.getReference(userID).child("Items").push();
 
 
+
+                String key = myRef.getKey();//Obtains Item key ready to be generated into QR code
+
+
+
                EditText sup = (EditText)findViewById(R.id.text_supplier);
                EditText cat = (EditText)findViewById(R.id.text_category);
                EditText bra = (EditText)findViewById(R.id.text_brand);

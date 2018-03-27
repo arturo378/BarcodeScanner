@@ -22,13 +22,25 @@ public class Scan extends AppCompatActivity   {
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
     DatabaseReference myRef;
-    Button retrieve;
+    Button retrieve, fetch;
+    String key;
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                key = data.getStringExtra("scannedValue");
+            }
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
 
         retrieve = (Button) findViewById(R.id.scan_button_add);
+        fetch = (Button) findViewById(R.id.scan_button_delete);
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference();
@@ -38,18 +50,28 @@ public class Scan extends AppCompatActivity   {
         final EditText description = (EditText)findViewById(R.id.scan_text_description);
         final EditText model = (EditText)findViewById(R.id.scan_text_model);
 
-
+    fetch.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(Scan.this, qrScanner.class);
+            startActivityForResult(intent, 1);
+        }
+    });
     retrieve.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             FirebaseUser user = mAuth.getCurrentUser();
             String userID = user.getUid();
             FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference myRef = database.getReference(userID).child("Items").child("-L7aBzAt7TKek-BfbK9_").child("Brand");
-            DatabaseReference myRef2 = database.getReference(userID).child("Items").child("-L7aBzAt7TKek-BfbK9_").child("Category");
-            DatabaseReference myRef3 = database.getReference(userID).child("Items").child("-L7aBzAt7TKek-BfbK9_").child("Description");
-            DatabaseReference myRef4 = database.getReference(userID).child("Items").child("-L7aBzAt7TKek-BfbK9_").child("Model");
-            DatabaseReference myRef5 = database.getReference(userID).child("Items").child("-L7aBzAt7TKek-BfbK9_").child("Supplier");
+
+
+
+
+            DatabaseReference myRef = database.getReference(userID).child("Items").child(key).child("Brand");
+            DatabaseReference myRef2 = database.getReference(userID).child("Items").child(key).child("Category");
+            DatabaseReference myRef3 = database.getReference(userID).child("Items").child(key).child("Description");
+            DatabaseReference myRef4 = database.getReference(userID).child("Items").child(key).child("Model");
+            DatabaseReference myRef5 = database.getReference(userID).child("Items").child(key).child("Supplier");
 
 
 

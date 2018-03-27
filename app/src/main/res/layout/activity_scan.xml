@@ -130,6 +130,7 @@
                         android:background="@android:color/holo_green_dark"
                         android:text="Add"
                         android:textColor="@android:color/black" />
+
                 </LinearLayout>
 
             </LinearLayout>
