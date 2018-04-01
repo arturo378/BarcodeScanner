@@ -41,7 +41,7 @@ public class mainscreen extends AppCompatActivity implements View.OnClickListene
         switch(view.getId()){
             case R.id.button_scan:
 
-                startActivity(new Intent(this, Scan.class));
+                startActivity(new Intent(this, qrScanner.class));
 
                 break;
             case R.id.button_add:

@@ -64,8 +64,8 @@ public class Scan extends AppCompatActivity   {
             String userID = user.getUid();
             FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-
-
+            //key = "-L8cz6tqZohtrkaR0JTQ";
+            key = getIntent().getStringExtra("message_key");
 
             DatabaseReference myRef = database.getReference(userID).child("Items").child(key).child("Brand");
             DatabaseReference myRef2 = database.getReference(userID).child("Items").child(key).child("Category");

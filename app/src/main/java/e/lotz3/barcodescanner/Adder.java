@@ -1,5 +1,6 @@
 package e.lotz3.barcodescanner;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -105,9 +106,13 @@ public class Adder extends AppCompatActivity {
                 myRef.child("Brand").setValue(brand);
                 myRef.child("Model").setValue(model);
                 myRef.child("Description").setValue(description);
+                Intent intent = new Intent(Adder.this, qr_generator.class);
+                intent.putExtra("generator_key", key);
+                startActivity(intent);
 
 
-                setContentView(R.layout.activity_mainscreen);
+
+
             }
         });
     }
