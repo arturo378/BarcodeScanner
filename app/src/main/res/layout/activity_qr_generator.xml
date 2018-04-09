@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.android_examples.generateqrcode_android_examplescom.MainActivity"
+    android:background="#FFF8E1">
+
+    <Button
+        android:id="@+id/qr_button_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Menu" />
+
+    <Button
+        android:id="@+id/qr_button_generate"
+        android:layout_width="71dp"
+        android:layout_height="wrap_content"
+
+        android:layout_alignBaseline="@+id/qr_button_menu"
+        android:layout_alignBottom="@+id/qr_button_menu"
+        android:layout_alignParentEnd="true"
+        android:layout_weight="1"
+        android:text="Generate QR Code" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/qr_button_generate"
+        />
+
+</RelativeLayout>
