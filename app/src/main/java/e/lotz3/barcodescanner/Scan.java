@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,7 +23,7 @@ public class Scan extends AppCompatActivity   {
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
     DatabaseReference myRef;
-    Button retrieve, fetch;
+    Button add, fetch;
     String key;
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -39,7 +40,7 @@ public class Scan extends AppCompatActivity   {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
 
-        retrieve = (Button) findViewById(R.id.scan_button_add);
+        add = (Button) findViewById(R.id.scan_button_add);
         fetch = (Button) findViewById(R.id.scan_button_delete);
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
@@ -49,6 +50,78 @@ public class Scan extends AppCompatActivity   {
         final EditText category = (EditText)findViewById(R.id.scan_text_category);
         final EditText description = (EditText)findViewById(R.id.scan_text_description);
         final EditText model = (EditText)findViewById(R.id.scan_text_model);
+        FirebaseUser user = mAuth.getCurrentUser();
+        String userID = user.getUid();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+
+        key = getIntent().getStringExtra("message_key");
+
+
+        DatabaseReference myRef = database.getReference(userID).child("Items").child(key).child("Brand");
+        DatabaseReference myRef2 = database.getReference(userID).child("Items").child(key).child("Category");
+        DatabaseReference myRef3 = database.getReference(userID).child("Items").child(key).child("Description");
+        DatabaseReference myRef4 = database.getReference(userID).child("Items").child(key).child("Model");
+        DatabaseReference myRef5 = database.getReference(userID).child("Items").child(key).child("Supplier");
+
+
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                brand.setText(dataSnapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        myRef2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                category.setText(dataSnapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        myRef3.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                description.setText(dataSnapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        myRef4.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                model.setText(dataSnapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        myRef5.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                supplier.setText(dataSnapshot.getValue().toString());
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     fetch.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -57,80 +130,18 @@ public class Scan extends AppCompatActivity   {
             startActivityForResult(intent, 1);
         }
     });
-    retrieve.setOnClickListener(new View.OnClickListener() {
+    add.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             FirebaseUser user = mAuth.getCurrentUser();
             String userID = user.getUid();
             FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-            //key = "-L8cz6tqZohtrkaR0JTQ";
-            key = getIntent().getStringExtra("message_key");
-
-            DatabaseReference myRef = database.getReference(userID).child("Items").child(key).child("Brand");
-            DatabaseReference myRef2 = database.getReference(userID).child("Items").child(key).child("Category");
-            DatabaseReference myRef3 = database.getReference(userID).child("Items").child(key).child("Description");
-            DatabaseReference myRef4 = database.getReference(userID).child("Items").child(key).child("Model");
-            DatabaseReference myRef5 = database.getReference(userID).child("Items").child(key).child("Supplier");
+            DatabaseReference myRef = database.getReference(userID).child("Items").child(key).child("Quantity");
+            EditText quantitity = (EditText)findViewById(R.id.scan_text_quanity);
+            myRef.setValue(quantitity.getText().toString());
 
 
-
-            myRef.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    brand.setText(dataSnapshot.getValue().toString());
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-            myRef2.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    category.setText(dataSnapshot.getValue().toString());
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-            myRef3.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    description.setText(dataSnapshot.getValue().toString());
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-            myRef4.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    model.setText(dataSnapshot.getValue().toString());
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-            myRef5.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    supplier.setText(dataSnapshot.getValue().toString());
-
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
+            //Toast.makeText(getApplicationContext(), "Your toast message.", Toast.LENGTH_SHORT).show();
         }
     });
 

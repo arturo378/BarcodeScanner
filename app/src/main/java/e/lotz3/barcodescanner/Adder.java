@@ -95,17 +95,16 @@ public class Adder extends AppCompatActivity {
                EditText bra = (EditText)findViewById(R.id.text_brand);
                EditText mod = (EditText)findViewById(R.id.text_model);
                EditText des = (EditText)findViewById(R.id.text_description);
-                String supplier = sup.getText().toString();
-                String category = cat.getText().toString();
-                String brand = bra.getText().toString();
-                String model = mod.getText().toString();
-                String description = des.getText().toString();
 
-               myRef.child("Supplier").setValue(supplier);
-               myRef.child("Category").setValue(category);
-                myRef.child("Brand").setValue(brand);
-                myRef.child("Model").setValue(model);
-                myRef.child("Description").setValue(description);
+
+
+               myRef.child("Supplier").setValue(sup.getText().toString());
+               myRef.child("Category").setValue(cat.getText().toString());
+                myRef.child("Brand").setValue(bra.getText().toString());
+                myRef.child("Model").setValue(mod.getText().toString());
+
+                myRef.child("Description").setValue(des.getText().toString());
+                myRef.child("Quantity").setValue("0");
                 Intent intent = new Intent(Adder.this, qr_generator.class);
                 intent.putExtra("generator_key", key);
                 startActivity(intent);
