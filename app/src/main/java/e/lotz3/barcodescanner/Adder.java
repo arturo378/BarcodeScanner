@@ -82,24 +82,22 @@ public class Adder extends AppCompatActivity {
                 FirebaseUser user = mAuth.getCurrentUser();
                 String userID = user.getUid();
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-               DatabaseReference myRef = database.getReference(userID).child("Items").push();
+                DatabaseReference myRef = database.getReference(userID).child("Items").push();
 
 
 
                 String key = myRef.getKey();//Obtains Item key ready to be generated into QR code
 
 
-
-               EditText sup = (EditText)findViewById(R.id.text_supplier);
-               EditText cat = (EditText)findViewById(R.id.text_category);
-               EditText bra = (EditText)findViewById(R.id.text_brand);
-               EditText mod = (EditText)findViewById(R.id.text_model);
-               EditText des = (EditText)findViewById(R.id.text_description);
-
+                EditText sup = (EditText) findViewById(R.id.text_supplier);
+                EditText cat = (EditText) findViewById(R.id.text_category);
+                EditText bra = (EditText) findViewById(R.id.text_brand);
+                EditText mod = (EditText) findViewById(R.id.text_model);
+                EditText des = (EditText) findViewById(R.id.text_description);
 
 
-               myRef.child("Supplier").setValue(sup.getText().toString());
-               myRef.child("Category").setValue(cat.getText().toString());
+                myRef.child("Supplier").setValue(sup.getText().toString());
+                myRef.child("Category").setValue(cat.getText().toString());
                 myRef.child("Brand").setValue(bra.getText().toString());
                 myRef.child("Model").setValue(mod.getText().toString());
 

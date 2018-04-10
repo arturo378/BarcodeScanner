@@ -123,27 +123,27 @@ public class Scan extends AppCompatActivity   {
             }
         });
 
-    fetch.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(Scan.this, qrScanner.class);
-            startActivityForResult(intent, 1);
-        }
-    });
-    add.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            FirebaseUser user = mAuth.getCurrentUser();
-            String userID = user.getUid();
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference myRef = database.getReference(userID).child("Items").child(key).child("Quantity");
-            EditText quantitity = (EditText)findViewById(R.id.scan_text_quanity);
-            myRef.setValue(quantitity.getText().toString());
+        fetch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Scan.this, qrScanner.class);
+                startActivityForResult(intent, 1);
+            }
+        });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseUser user = mAuth.getCurrentUser();
+                String userID = user.getUid();
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference(userID).child("Items").child(key).child("Quantity");
+                EditText quantitity = (EditText) findViewById(R.id.scan_text_quanity);
+                myRef.setValue(quantitity.getText().toString());
 
 
-            //Toast.makeText(getApplicationContext(), "Your toast message.", Toast.LENGTH_SHORT).show();
-        }
-    });
+                //Toast.makeText(getApplicationContext(), "Your toast message.", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }

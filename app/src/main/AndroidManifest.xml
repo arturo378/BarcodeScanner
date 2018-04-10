@@ -27,7 +27,7 @@
         <activity android:name=".SignUp" />
         <activity android:name=".Scan" />
         <activity android:name=".qrScanner" />
-        <activity android:name=".qr_generator"></activity>
+        <activity android:name=".qr_generator" />
     </application>
 
 </manifest>

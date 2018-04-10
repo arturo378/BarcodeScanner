@@ -9,24 +9,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
 
 
-import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class mainscreen extends AppCompatActivity implements View.OnClickListener {
 
-        private ListView listView;
-    FirebaseDatabase mFirebaseDatabase;
-    FirebaseAuth mAuth;
-    FirebaseAuth.AuthStateListener mAuthListener;
-    DatabaseReference myRef;
-    private ListView mListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,32 +24,10 @@ public class mainscreen extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_mainscreen);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
         findViewById(R.id.button_scan).setOnClickListener(this);
         findViewById(R.id.button_add).setOnClickListener(this);
-    /*
-        mAuth = FirebaseAuth.getInstance();
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        String userID = user.getUid();
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference(userID).child("Items");
-        mListView = (ListView) findViewById(R.id.database_list_view);
-
-        FirebaseListAdapter<String> firebaseListAdapter = new FirebaseListAdapter<String>(
-                this,
-                String.class,
-                android.R.layout.simple_list_item_1,
-                myRef) {
-            @Override
-            protected void populateView(View v, String model, int position) {
-
-                TextView textView = (TextView) v.findViewById(android.R.id.text1);
-                textView.setText(model);
-
-            }
-        };
-
-        mListView.setAdapter(firebaseListAdapter)*/
 
 
 
