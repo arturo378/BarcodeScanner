@@ -8,15 +8,30 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class mainscreen extends AppCompatActivity implements View.OnClickListener {
-
+    private Button parse;
+    FirebaseDatabase mFirebaseDatabase;
+    FirebaseAuth mAuth;
+    FirebaseAuth.AuthStateListener mAuthListener;
+    DatabaseReference myRef;
+    ListView l1;
+    List<String> itemlist;
+    UserInformation info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +39,35 @@ public class mainscreen extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_mainscreen);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
         findViewById(R.id.button_scan).setOnClickListener(this);
         findViewById(R.id.button_add).setOnClickListener(this);
+        l1 = (ListView) findViewById(R.id.listView);
+        itemlist = new ArrayList<>();
 
+        mAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        myRef = mFirebaseDatabase.getReference();
 
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                itemlist.clear();
+                for (DataSnapshot items : dataSnapshot.getChildren()) {
+                    //info = items.getValue(UserInformation.class);
+                    itemlist.add("Apple");
+                    itemlist.add("Microsoft");
+                    itemlist.add("Bestbuy");
+                }
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(mainscreen.this, android.R.layout.simple_list_item_1, itemlist);
+                l1.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
 
