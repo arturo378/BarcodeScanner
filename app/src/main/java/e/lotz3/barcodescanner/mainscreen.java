@@ -14,6 +14,7 @@ import android.widget.ListView;
 
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,24 +43,27 @@ public class mainscreen extends AppCompatActivity implements View.OnClickListene
         findViewById(R.id.button_scan).setOnClickListener(this);
         findViewById(R.id.button_add).setOnClickListener(this);
         l1 = (ListView) findViewById(R.id.listView);
-        itemlist = new ArrayList<>();
+
+        final ArrayList<Item> item = new ArrayList<>();
 
         mAuth = FirebaseAuth.getInstance();
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        myRef = mFirebaseDatabase.getReference();
+        FirebaseUser user = mAuth.getCurrentUser();
+        String userID = user.getUid();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference(userID).child("Items");
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                itemlist.clear();
+                item.clear();
                 for (DataSnapshot items : dataSnapshot.getChildren()) {
-                    //info = items.getValue(UserInformation.class);
-                    itemlist.add("Apple");
-                    itemlist.add("Microsoft");
-                    itemlist.add("Bestbuy");
-                }
+                    info = items.getValue(UserInformation.class);
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(mainscreen.this, android.R.layout.simple_list_item_1, itemlist);
+                    Item item1 = new Item(info.Quantity, info.Category, info.Model);
+                    item.add(item1);
+                }
+                ItemListAdapter adapter = new ItemListAdapter(mainscreen.this, R.layout.adapter_new_layout, item);
+
                 l1.setAdapter(adapter);
             }
 
