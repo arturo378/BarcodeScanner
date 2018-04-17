@@ -40,8 +40,9 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
         String category = getItem(position).getCategory();
         String quantity = getItem(position).getQuantity();
         String model = getItem(position).getModel();
+        String key = getItem(position).getKey();
 
-        Item item = new Item(category, quantity, model);
+        Item item = new Item(category, quantity, model, key);
 
 
         LayoutInflater inflater = LayoutInflater.from(mContext);

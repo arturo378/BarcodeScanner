@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -52,6 +53,7 @@ public class mainscreen extends AppCompatActivity implements View.OnClickListene
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(userID).child("Items");
 
+
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -59,13 +61,25 @@ public class mainscreen extends AppCompatActivity implements View.OnClickListene
                 for (DataSnapshot items : dataSnapshot.getChildren()) {
                     info = items.getValue(UserInformation.class);
 
-                    Item item1 = new Item(info.Quantity, info.Category, info.Model);
+
+                    Item item1 = new Item(info.Quantity, info.Category, info.Model, items.getKey());
                     item.add(item1);
                 }
                 ItemListAdapter adapter = new ItemListAdapter(mainscreen.this, R.layout.adapter_new_layout, item);
 
                 l1.setAdapter(adapter);
+                l1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(mainscreen.this, Scan.class);
+                        Item model = item.get(position);
+
+                        intent.putExtra("message_key", model.getKey().toString());
+                        startActivity(intent);
+                    }
+                });
             }
+
 
             @Override
             public void onCancelled(DatabaseError databaseError) {

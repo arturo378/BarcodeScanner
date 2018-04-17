@@ -69,7 +69,9 @@ public class Scan extends AppCompatActivity   {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                brand.setText(dataSnapshot.getValue().toString());
+                if (dataSnapshot.exists()) {
+                    brand.setText(dataSnapshot.getValue().toString());
+                }
             }
 
             @Override
@@ -80,7 +82,9 @@ public class Scan extends AppCompatActivity   {
         myRef2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                category.setText(dataSnapshot.getValue().toString());
+                if (dataSnapshot.exists()) {
+                    category.setText(dataSnapshot.getValue().toString());
+                }
             }
 
             @Override
@@ -91,7 +95,9 @@ public class Scan extends AppCompatActivity   {
         myRef3.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                description.setText(dataSnapshot.getValue().toString());
+                if (dataSnapshot.exists()) {
+                    description.setText(dataSnapshot.getValue().toString());
+                }
             }
 
             @Override
@@ -102,7 +108,9 @@ public class Scan extends AppCompatActivity   {
         myRef4.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                model.setText(dataSnapshot.getValue().toString());
+                if (dataSnapshot.exists()) {
+                    model.setText(dataSnapshot.getValue().toString());
+                }
             }
 
             @Override
@@ -113,8 +121,9 @@ public class Scan extends AppCompatActivity   {
         myRef5.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                supplier.setText(dataSnapshot.getValue().toString());
-
+                if (dataSnapshot.exists()) {
+                    supplier.setText(dataSnapshot.getValue().toString());
+                }
             }
 
             @Override
@@ -126,8 +135,16 @@ public class Scan extends AppCompatActivity   {
         fetch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Scan.this, qrScanner.class);
+                mAuth = FirebaseAuth.getInstance();
+                FirebaseUser user = mAuth.getCurrentUser();
+                String userID = user.getUid();
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                key = getIntent().getStringExtra("message_key");
+                DatabaseReference Ref378 = database.getReference(userID).child("Items").child(key);
+                Ref378.removeValue();
+                Intent intent = new Intent(Scan.this, mainscreen.class);
                 startActivityForResult(intent, 1);
+
             }
         });
         add.setOnClickListener(new View.OnClickListener() {
@@ -139,6 +156,9 @@ public class Scan extends AppCompatActivity   {
                 DatabaseReference myRef = database.getReference(userID).child("Items").child(key).child("Quantity");
                 EditText quantitity = (EditText) findViewById(R.id.scan_text_quanity);
                 myRef.setValue(quantitity.getText().toString());
+
+                Intent intent = new Intent(Scan.this, mainscreen.class);
+                startActivityForResult(intent, 1);
 
 
                 //Toast.makeText(getApplicationContext(), "Your toast message.", Toast.LENGTH_SHORT).show();
