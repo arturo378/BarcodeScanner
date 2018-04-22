@@ -126,7 +126,6 @@ public class mainscreen extends AppCompatActivity implements View.OnClickListene
                 startActivity(new Intent(this, MainActivity.class));
 
 
-
             break;
         }
 

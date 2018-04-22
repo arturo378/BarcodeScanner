@@ -23,7 +23,7 @@ public class Scan extends AppCompatActivity   {
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
     DatabaseReference myRef;
-    Button add, fetch;
+    Button add, delete, qrgen;
     String key;
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -41,7 +41,8 @@ public class Scan extends AppCompatActivity   {
         setContentView(R.layout.activity_scan);
 
         add = (Button) findViewById(R.id.scan_button_add);
-        fetch = (Button) findViewById(R.id.scan_button_delete);
+        delete = (Button) findViewById(R.id.scan_button_delete);
+        qrgen = (Button) findViewById(R.id.scan_button_qrgen);
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference();
@@ -132,7 +133,7 @@ public class Scan extends AppCompatActivity   {
             }
         });
 
-        fetch.setOnClickListener(new View.OnClickListener() {
+        delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mAuth = FirebaseAuth.getInstance();
@@ -162,6 +163,15 @@ public class Scan extends AppCompatActivity   {
 
 
                 //Toast.makeText(getApplicationContext(), "Your toast message.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        qrgen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Scan.this, qr_generator.class);
+                intent.putExtra("generator_key", key);
+                startActivity(intent);
+
             }
         });
 
