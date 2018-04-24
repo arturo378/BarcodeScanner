@@ -64,6 +64,7 @@ public class mainscreen extends AppCompatActivity implements View.OnClickListene
 
                     Item item1 = new Item(info.Quantity, info.Category, info.Model, items.getKey());
                     item.add(item1);
+
                 }
                 ItemListAdapter adapter = new ItemListAdapter(mainscreen.this, R.layout.adapter_new_layout, item);
 

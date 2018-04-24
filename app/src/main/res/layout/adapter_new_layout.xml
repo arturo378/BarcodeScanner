@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:id="@+id/textView1"
-        android:layout_weight="66.6" />
+        android:layout_weight="66.6"
+        android:textColor="@color/White"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -26,7 +27,8 @@
             android:text="TextView2"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/textView2" />
+            android:id="@+id/textView2"
+            android:textColor="@color/White" />
 
         <TextView
             android:gravity="center"
@@ -34,7 +36,8 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:id="@+id/textView3"
-            android:layout_below="@+id/textView2" />
+            android:layout_below="@+id/textView2"
+            android:textColor="@color/White"/>
     </LinearLayout>
 
 </LinearLayout>

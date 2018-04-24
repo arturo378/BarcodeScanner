@@ -1,147 +1,244 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="e.lotz3.barcodescanner.Scan">
+    android:background="@drawable/inv_bground"
+    tools:context="e.lotz3.barcodescanner.Scan"
+    android:id="@+id/linearLayout2">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="e.lotz3.barcodescanner.Adder">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
+        android:text="Quantity:"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/scan_text_quanity"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_absoluteHeight="25dp"
+        tools:layout_conversion_absoluteWidth="384dp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+    <EditText
+        android:id="@+id/scan_text_quanity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_absoluteHeight="46dp"
+        tools:layout_conversion_absoluteWidth="77dp"
+        android:textColor="@android:color/white"
+        android:textColorLink="@android:color/white" />
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Quantity:"
-                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="28dp"
+        android:text="Supplier:"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/scan_text_supplier"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:layout_conversion_absoluteHeight="25dp"
+        tools:layout_conversion_absoluteWidth="384dp" />
 
-                <EditText
-                    android:id="@+id/scan_text_quanity"
-                    android:layout_width="77dp"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number" />
+    <EditText
+        android:id="@+id/scan_text_supplier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scan_text_quanity"
+        tools:layout_conversion_absoluteHeight="46dp"
+        tools:layout_conversion_absoluteWidth="215dp"
+        android:textColor="@android:color/white"
+        android:textColorLink="@android:color/white" />
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Supplier:"
-                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="28dp"
+        android:text="Category:"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/scan_text_category"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:layout_conversion_absoluteHeight="25dp"
+        tools:layout_conversion_absoluteWidth="384dp" />
 
-                <EditText
-                    android:id="@+id/scan_text_supplier"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+    <EditText
+        android:id="@+id/scan_text_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scan_text_supplier"
+        tools:layout_conversion_absoluteHeight="46dp"
+        tools:layout_conversion_absoluteWidth="215dp"
+        android:textColor="@android:color/white"
+        android:textColorLink="@android:color/white" />
 
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Category:"
-                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
+        android:text="Brand:"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/scan_text_brand"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:layout_conversion_absoluteHeight="25dp"
+        tools:layout_conversion_absoluteWidth="384dp" />
 
-                <EditText
-                    android:id="@+id/scan_text_category"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName" />
+    <EditText
+        android:id="@+id/scan_text_brand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scan_text_category"
+        tools:layout_conversion_absoluteHeight="46dp"
+        tools:layout_conversion_absoluteWidth="215dp"
+        android:textColor="@android:color/white"
+        android:textColorLink="@android:color/white" />
 
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Brand:"
-                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
+        android:text="Model:"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/scan_text_model"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        tools:layout_conversion_absoluteHeight="25dp"
+        tools:layout_conversion_absoluteWidth="384dp" />
 
-                <EditText
-                    android:id="@+id/scan_text_brand"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName" />
+    <EditText
+        android:id="@+id/scan_text_model"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scan_text_brand"
+        tools:layout_conversion_absoluteHeight="46dp"
+        tools:layout_conversion_absoluteWidth="215dp"
+        android:textColor="@android:color/white"
+        android:textColorLink="@android:color/white" />
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Model:"
-                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:layout_marginTop="8dp"
+        android:text="Description:"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/scan_text_description"
+        app:layout_constraintTop_toBottomOf="@+id/scan_text_model"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_conversion_absoluteHeight="25dp"
+        tools:layout_conversion_absoluteWidth="384dp"
+        tools:layout_editor_absoluteX="145dp" />
 
-                <EditText
-                    android:id="@+id/scan_text_model"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName" />
+    <EditText
+        android:id="@+id/scan_text_description"
+        android:layout_width="350dp"
+        android:layout_height="143dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/scan_button_qrgen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_conversion_absoluteHeight="144dp"
+        tools:layout_conversion_absoluteWidth="384dp"
+        android:textColor="@android:color/white"
+        android:textColorLink="@android:color/white" />
 
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Description:"
-                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
-                <EditText
-                    android:id="@+id/scan_text_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="279dp"
-                    android:ems="10"
-                    android:inputType="textMultiLine" />
+    <Button
+        android:id="@+id/scan_button_delete"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_light"
+        android:text="Delete"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="128dp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+    <Button
+        android:id="@+id/scan_button_qrgen"
+        android:layout_width="124dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="QR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/scan_button_add"
+        app:layout_constraintStart_toEndOf="@+id/scan_button_delete"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="128dp" />
 
-                    <Button
-                        android:id="@+id/scan_button_delete"
-                        android:background="@android:color/holo_red_light"
-                        android:textColor="@android:color/black"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Delete" />
+    <Button
+        android:id="@+id/scan_button_add"
+        android:layout_width="130dp"
+        android:layout_height="51dp"
+        android:background="@android:color/holo_green_dark"
+        android:text="Add"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="128dp" />
 
-                    <Button
-                        android:id="@+id/scan_button_qrgen"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="QR" />
 
-                    <Button
-                        android:id="@+id/scan_button_add"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@android:color/holo_green_dark"
-                        android:text="Add"
-                        android:textColor="@android:color/black" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

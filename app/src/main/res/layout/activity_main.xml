@@ -5,59 +5,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     tools:context="e.lotz3.barcodescanner.MainActivity">
+
 
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="13dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="237dp"
         android:ems="10"
-        android:hint="email"
-        android:inputType="textEmailAddress" />
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        android:singleLine="false"
+        android:textCursorDrawable="@null"
+        android:textColor="@android:color/white"
+        android:textColorLink="@android:color/white" />
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/editTextEmail"
-        android:layout_marginTop="31dp"
+        android:layout_alignBottom="@+id/imageView2"
+        android:layout_centerHorizontal="true"
         android:ems="10"
         android:hint="Password:"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textCursorDrawable="@null"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/button_signup"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editTextPassword"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:text="Sign Up" />
-
-    <Button
-        android:id="@+id/button_signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/button_signup"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/button_signup"
-        android:layout_marginTop="17dp"
-        android:text="Create Account" />
-
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="114dp"
+        android:background="@android:color/transparent"
+        android:text="Not registered? Sign Up Here" />
+    <!--
+        <Button
+            android:background="1100000"
+            android:id="@+id/button_signup"
+            android:layout_width="27dp"
+            android:layout_height="23dp"
+            android:layout_alignEnd="@+id/button_signup"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/button_signup"
+            android:layout_marginEnd="292dp"
+            android:layout_marginTop="17dp"
+            android:text="Create Account" />
+    -->
     <Button
         android:id="@+id/button_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editTextPassword"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/editTextPassword"
-        android:layout_marginTop="21dp"
-        android:text="Login"/>
+        android:layout_width="250dp"
+        android:layout_height="58dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="165dp"
+        android:background="@drawable/round_btn"
+        android:text="Login"
+
+        android:textColor="@android:color/white"/>
     <ProgressBar
         android:id="@+id/progressbar"
         style="?android:attr/progressBarStyle"
@@ -69,4 +80,31 @@
         android:layout_toEndOf="@+id/button_signup"
         android:visibility="gone"
         />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="53dp"
+        android:layout_height="46dp"
+        android:layout_below="@+id/editTextEmail"
+        android:layout_marginTop="7dp"
+        android:layout_toStartOf="@+id/editTextEmail"
+        app:srcCompat="@drawable/lockicon" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="52dp"
+        android:layout_height="46dp"
+        android:layout_alignTop="@+id/editTextEmail"
+        android:layout_toStartOf="@+id/editTextEmail"
+        app:srcCompat="@drawable/usericon2" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="234dp"
+        android:layout_height="187dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        app:srcCompat="@drawable/test3what" />
+
 </RelativeLayout>
